@@ -3,6 +3,11 @@
   "displayName": "Character Count",
   "description": "It simply counts and displays the number of characters in txt and md files.",
   "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sink66/character-count.git"
+  },
   "engines": {
     "vscode": "^1.110.0"
   },
