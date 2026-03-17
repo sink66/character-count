@@ -15,7 +15,7 @@ function updateStatusBar(editor: vscode.TextEditor | undefined): void {
 	}
 
 	const characterCount = countCharacters(editor.document.getText());
-	statusBarItem.text = `$(symbol-string) ${characterCount.toLocaleString()}文字`;
+	statusBarItem.text = `${characterCount.toLocaleString()}文字`;
 	statusBarItem.tooltip = `${path.basename(editor.document.fileName)}: ${characterCount.toLocaleString()} 文字`;
 	statusBarItem.show();
 }
