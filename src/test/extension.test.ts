@@ -1,15 +1,20 @@
 import * as assert from 'assert';
-
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
 import * as vscode from 'vscode';
-// import * as myExtension from '../../extension';
+import { countCharacters, isSupportedFile } from '../characterCount';
 
 suite('Extension Test Suite', () => {
 	vscode.window.showInformationMessage('Start all tests.');
 
-	test('Sample test', () => {
-		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
-		assert.strictEqual(-1, [1, 2, 3].indexOf(0));
+	test('counts grapheme clusters as characters', () => {
+		assert.strictEqual(countCharacters('abc'), 3);
+		assert.strictEqual(countCharacters('あいう'), 3);
+		assert.strictEqual(countCharacters('A😀é'), 3);
+	});
+
+	test('supports txt and md files only', () => {
+		assert.strictEqual(isSupportedFile('note.txt'), true);
+		assert.strictEqual(isSupportedFile('README.md'), true);
+		assert.strictEqual(isSupportedFile('memo.markdown'), false);
+		assert.strictEqual(isSupportedFile('script.ts'), false);
 	});
 });
